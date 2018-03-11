@@ -9,3 +9,7 @@ Do you want to go in Guantanamo ???
 Here is the solution : The Pop Button !
 
 The Pop Button is a little device that fits in your cosy place and allows you to keep track of whatever item you need on the cloud in order to manage it the more efficient way.
+
+here goes some Pictures of what we need
+
+![Screen](images/screen.jpg)
