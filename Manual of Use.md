@@ -45,5 +45,5 @@ This is a list of the product specifications:
 
 * 2.4GHz Wi-Fi Connection
 * Screen Size of 128 x 64 pixels (46.5 x 27.7 mm)
-* Distance activator @ 76.2 mm
-* 
+* Distance to activate the device of 76.2 mm
+* 4 x AA Batteries Required
