@@ -1,0 +1,373 @@
+\documentclass[12pt,a4paper,landscape]{article}
+
+\usepackage{pagecolor, afterpage}
+\usepackage{eurosym,graphicx,multicol,float}
+\usepackage[pdfborder={0 0 0},pdfhighlight=/P,]{hyperref}
+\usepackage[margin=2cm]{geometry}
+\title{\Huge \textbf{The Pop Button}}
+\date{}
+\author{Kentin and Nil}
+\graphicspath{{images/}}
+
+\begin{document}
+
+\definecolor{mycol1}{rgb}{1, 1, 1}
+\definecolor{mycol2}{rgb}{1, 1, 1}
+\definecolor{mycol3}{rgb}{1, 1, 1}
+\definecolor{mycol4}{rgb}{1, 1, 1}
+
+%\definecolor{mycol1}{rgb}{0.7, 0.8, 1}
+%\definecolor{mycol2}{rgb}{1, 0.6, 0.6}
+%\definecolor{mycol3}{rgb}{0.7, 0.4, 0.8}
+%\definecolor{mycol4}{rgb}{0.1, 0.6, 0.8}
+
+\pagecolor{mycol1}
+\maketitle
+
+\centering{
+\includegraphics[width=10cm]{pop_button.png}
+}
+\newpage
+\newpagecolor{mycol2}
+
+\section*{\centering Introduction}
+	\begin{multicols}{2}
+	Do you know Sonia?
+	
+	Sonia is a young mum, her little baby is sick and she needs to buy some medication.
+	So she, as everyone in 19th century, grabs a piece of paper and notes down the medicine along other things as the eggs she needs for Patrick's birthday's cake...
+	
+	The day after, at the grocery she realizes that she left the list on the fridge and forgot about the medication, once she came back at home the baby was dying and the neighbour had called the police... She is now serving 5 years at Guantanamo for medical negligence.
+	
+	\vspace{1em}
+
+	Did you ever experienced something similar ???\\
+
+	\vspace{1em}
+
+	Do you want to go in Guantanamo ???\\
+
+	\vspace{2em}
+	
+	Don't worry we have the solution :
+	
+	\subsection*{\centering The Pop Button !}
+	
+	The POP Button is a little device that fits in your cosy place and allows you to keep track of whatever item you need on the cloud in order for you manage it the most efficient way.
+	
+	If Sonia would have had a POP Button, once she realized she forgot the list on the fridge, she would have been able to connect with her smartphone to our server and find back all the items she entered thanks to her POP friend.
+	
+	\end{multicols}
+	
+\newpage
+\newpagecolor{mycol3}
+\section*{Block Diagram}
+	\includegraphics[width=19cm]{block-diagram.png}
+
+\newpage
+\newpagecolor{mycol2}
+\section*{Manual}
+	\begin{multicols}{2}
+		\subsection*{First Use / Configuration}
+		Before using the POP Button you have to configure the SD Card, connect the SD Card to a computer and use our program to format it.\\
+		To use the product for the first time open the rear panel to reveal the battery and SD Card slot. First, put the SD Card in and then put the AA-type batteries. Finally, make sure the switch is in the On position and close the back panel.\\
+		Now the screen should light up and you can start to use your product normally. If it doesn't, refer to the troubleshooting section.
+		\subsection*{Normal Use}
+		Usually, the screen will be turned off and the device will be in sleep mode. The screen should light up when you approach your hand to the device, if it doesn't, press the knob to turn on the screen.
+
+		Once the screen is lit up, you can select the product you want by turning the knob to change the selected item.
+
+		Once you're done, the screen will show you a confirmation and you will hear a sound to confirm the order, also the knob will change it's color accordingly.
+		\subsection*{Settings}
+		Most advanced settings are edited via the SD Card. But some of them can be edited through the machine.
+		To enter settings, long-press the knob. Once you are in the menu, select the desired option and press the button. Now you can adjust the value and push again to validate.
+		\subsection*{Knob Color Codes}
+			\begin{tabular}{|c|c|p{4.3cm}|}
+			\hline
+				Off & Sleep & When the button is off it means that the device is in sleep mode\\
+				\hline
+				Blue & Ready & The device just turned on\\
+				\hline
+				Orange & Working & The order has been recorded but the device is still sending it to the server\\
+				\hline
+				Green & Done & The order was processed successfully\\
+				\hline
+				Red & Error & The device encountered an error\\
+				\hline
+				Blinking Red & Low Battery & The device is running out of battery. The screen won't turn on until you replace the batteries.\\
+				\hline
+			\end{tabular}
+		\subsection*{Troubleshooting}
+		Almost all of the errors can be resolved by following the on-screen instructions. However, here are some other problems that might arise:
+		\begin{figure}[H]
+			\centering
+			\begin{tabular}{|c|p{5cm}|}
+				\hline
+				Symptom & Solution\\
+				\hline
+				The device won't turn on & Check that the switch on the back is turned on.\\
+				\hline
+			\end{tabular}
+		\end{figure}
+	\end{multicols}
+
+\vspace{2cm}
+
+\newpage
+\newpagecolor{mycol1}
+
+\section*{Protocols}
+	\begin{multicols}{2}
+		\subsection*{UART}
+		UART stands for "Universal Asynchronous Receiver Transmitter" it is a little circuit in a micro-controller which transmits and receives serial data.
+		As it doesn't use clock it needs to work on a fixed frequency known as the baud rate, the baud rate is explained as bits per second (bps) and both peripherals needs to work on the same one in order to communicate.
+		UART transmits data in packets which consist of 1 start bit, 5 to 9 data bits, an optional parity bit, and 1 or 2 stop bits.
+
+		\begin{center}
+			\includegraphics[width=12cm]{UART_packet.png}
+		\end{center}
+
+		\vspace{4cm}
+
+		\subsection*{SPI}
+		SPI stands for "Serial Peripheral Interface" it is a synchronous and full-duplex communication protocol, which means that it uses a clock and it can receive and send at the same time\\
+
+		\subsubsection*{}
+		This protocol needs 3 pins in order to work and uses one pin more for each slave to select it
+		\begin{itemize}
+			\item SCLK $\Rightarrow$ Serial Clock\\
+				  (SCK, SCL)
+			\item MOSI $\Rightarrow$ Master Output, Slave Input\\
+				  (SDI, DI, SI)
+			\item MISO $\Rightarrow$ Master Input, Slave Output\\
+				  (SDO, SDA, DO, SO)
+			\item SS $\Rightarrow$ Slave Select\\
+				  (nCS, CS, nSS, STE, CSN)
+		\end{itemize}
+		There are 4 modes available to use the clock depending on the peripherals properties\\
+			\begin{center}
+				\begin{tabular}{|c|c|c|}\hline
+					SPI mode & CPOL & CPHA \\\hline\hline
+					0        & 0    & 0    \\\hline
+					1        & 0    & 1    \\\hline
+					2        & 1    & 0    \\\hline
+					3        & 1    & 1    \\\hline
+				\end{tabular}
+			\end{center}
+
+		The master starts by pulling down the Slave Select and starts the clock, then it sends a Read/Write bit, the address it wants to access. FinalLy it reads or writes the actual data
+
+
+		\subsection*{\texorpdfstring{i$^{2}$C}{}}
+		I$^2$C or IIC stands for Inter-Integrated Circuit, it is a protocol which is synchronous, half-duplex, multi-master and multi-slave. It can address between 127 and 1024 devices but is slower than SPI
+		\subsubsection*{}
+		This protocol only needs 2 pins
+		\begin{itemize}
+			\item SCL $\Rightarrow$ Serial Clock Line\\
+			\item SDA $\Rightarrow$ Serial Data Line
+		\end{itemize}
+		\vspace{2cm}
+		\subsubsection*{timeline}
+		First the master sends a start bit by pulling down the SDA right before the clock, then sends the device address (7, 8 or 10 bits), a Read/Write bit and wait for the acknowledgment of the slave. Then sends the real data which can be the data address of the device wait for acknowledgment and start again until the stop signal by pulling up the SDA right after the clock. 
+		\includegraphics[width=10cm]{i2c.png}
+
+	\end{multicols}
+\section*{Specifications}
+
+	\centering{
+	\begin{itemize}
+		\item 2.4GHz Wi-Fi Connection
+		\item Screen Size of 128 x 64 pixels ($46.5 x 27.7 mm$)
+		\item Endless rotary button
+		\item RGB LED
+		\item Maximum distance to activate the device of 76.2 mm
+		\item 4 x AA Batteries Required
+		\item 3 months autonomy
+	\end{itemize}
+}
+
+\vspace{2cm}
+
+\newpage
+\newpagecolor{mycol2}
+
+\section*{So what do we need ?}
+	\begin{multicols}{2}
+	\subsection*{A PIC}
+		\begin{figure}[H]
+		\centering
+		\includegraphics[width=4cm]{images/pic32.png}
+		\end{figure}
+		The choice of the PIC have been done mostly on the power consumption performance and the availability on farnell as well as the number of SPI ports.
+
+	\subsection*{A Button}
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=3cm]{images/rotary_encoder.png}
+			\end{figure}
+			We chose this encoder because it fits exactly our needs: it rotates infinitly either way, it has a push button integrated enabling the ability to choose and select within an instant, further to that it also has an RGB led incorporated !
+
+	\subsection*{A Wifi Module}
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=4cm]{images/atwinc1500.png}
+			\end{figure}
+			In order to communicate with the server we needed a wifi connection that we found in the atwinc1500, this module is compatible with most wifi encryption and has an SPI interface as well as a low-power mode.
+
+	\subsection*{A screen}
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=4cm]{images/screen.png}
+			\end{figure}
+			We chose this screen because it is large enough to contain a good list of words,it has an English and Japanese font set, it is bright so we can see it in different environnements and it is 3.3V powered wich make it easy to interface with all other modules.
+
+	\subsubsection*{Screen Connector}
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=4cm]{images/screen_connector.png}
+			\end{figure}
+
+	\subsection*{Memory Socket}
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=4cm]{images/memory_socket.png}
+			\end{figure}
+			As a compusilve buyer you will need a lot of products in your list, that's why we chose to add a 64Gb memory extension.
+
+			\vspace{4cm}
+
+	\subsection*{Photo-Diode}
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=4cm]{images/photo-diode.png}
+			\end{figure}
+			Thanks to the half-god Gregory Le Grand we will use a photo-diode to interact with the device, we chose this one because it can detect a distance of 7.4cm instead of 2.5 for most devices
+
+	\subsection*{Piezo}
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=4cm]{images/piezo.png}
+			\end{figure}
+			Because everyone loves music, we necessarily wanted a good audio interface that satisfies this requirement.
+
+	\subsection*{Switch}
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=4cm]{images/switch.png}
+			\end{figure}
+			This basic switch will be the one to turn all the lights off, in order to store the product we want a way to switch it completly off keeping the batteries inside
+
+			\vspace{4cm}
+	\subsection*{Battery Holder}
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=4cm]{images/battery_holder.png} 
+			\end{figure}
+			Because it wont hold itself...\\
+			We chose this one because it widely used, well appreciated and we needed enough mAh to be able to use the device during several months 
+
+			we have 4 AA batteries holding each one 2850mAh 
+
+			4 * 2850 = 11400 
+
+			Our device consumes at most 500mA in case everything is working at the same time\\
+
+			so 11400/500 = 22.8 hours the hard way\\
+
+			considering that we use the device 15 minutes a day we use it 7h45 by month 
+
+			 22 / 7.75 = 2,84 months 
+
+			In this conditions we can use the device during three months without changing the batteries which is acceptable.
+	\end{multicols}
+
+	\vspace{3cm}
+
+\newpage
+\newpagecolor{mycol3}
+\section*{References and links}
+			\center{
+				We need to be more precise on the consumption, the voltage regulator might not use more than the pic or the screen...\\
+				I didn't find a good approximation of the pic consumption\\
+				So we have to know on witch frequency the pic will work with the ATWINC and without (idle mode and sleep mode)
+
+				\vspace{1em}
+
+				\begin{tabular}{|c|c|c|c|c|c|}\hline
+					component & reference & price(\euro) & consumption & Frequency & Datasheets \\
+					\hline
+					
+					SoC &
+					\href{http://fr.farnell.com/microchip/pic32mx174f256b-i-so/mcu-32-bits-pic32mx-72mhz-soic/dp/2775021?st=PIC32MX174F256B}
+					{PIC32MX174F256B-I/SO} & 3.48 & $\sim$ 200mA  @ 3.3V = 660mW &
+					72Mhz &
+					\href{http://www.farnell.com/datasheets/2244305.pdf}{\includegraphics[height=1em]{pdf.png}}
+					\href{http://ww1.microchip.com/downloads/en/DeviceDoc/80000739A.pdf}{\includegraphics[height=1em]{pdf.png}}\\
+					
+					Wi-Fi &
+					\href{http://fr.farnell.com/microchip/atwinc1500-mr210pb1952/mod-iot-smartconnect-2-472ghz/dp/2759346?st=atwin}
+					{ATWINC1500}  & 6.61 & 70mA / 172mA @ 3.3V = 564mW &
+					26Mhz &
+					\href{http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-42420-WINC1500-Software-Design-Guide_UserGuide.pdf}{\includegraphics[height=1em]{pdf.png}}
+					\href{http://www.farnell.com/datasheets/2286658.pdf}{\includegraphics[height=1em]{pdf.png}}\\
+					
+					Screen &
+					\href{http://fr.farnell.com/midas/mccog128064b12w-fptlw/afficheur-lcd-graphique-128x64/dp/2664759}
+					{MCCOG128064B12W} & 8.69 & 40mA @ 3.3V = 132mW &
+					64hz &
+					\href{http://www.farnell.com/datasheets/2151564.pdf}{\includegraphics[height=1em]{pdf.png}}\\
+					
+					Screen connector &
+					\href{http://fr.farnell.com/jst-japan-solderless-terminals/28flz-rsm2-tb-lf-sn-p/connecteur-ffc-fpc-rcpt-28pos/dp/2399417?st=fpc}
+					{28FLZ-RSM2-TB(LF)(SN)(P)} & 1,37 & &
+					- &
+					\href{http://www.farnell.com/datasheets/1862006.pdf}{\includegraphics[height=1em]{pdf.png}}\\
+					
+					Rotary Encoder &
+					\href{http://fr.farnell.com/bourns/pel12t-4225s-s1024/rotary-encoder-incremental-24/dp/1857565?MER=sy-me-pd-mi-acce&st=rotary\%20encoder}
+					{PEL12T-4225S-S1024}
+					\href{https://www.lextronic.fr/encodeurs-rotatifs/19812-bouton-transparent-pour-potentiometre.html}{COM-10597}& 1.88 & 10mA @ 5V = 50mW & 
+					- &
+					\href{http://www.farnell.com/datasheets/2053586.pdf}{\includegraphics[height=1em]{pdf.png}}\\
+					
+					Photo-Diode &
+					\href{http://fr.farnell.com/optek-technology/opb732/capteur-reflectif-pcb/dp/1226877}
+					{OPB732} & 3.2 & 50mA @ 3.3V = 165mW &
+					- &
+					\href{http://www.farnell.com/datasheets/2331536.pdf}{\includegraphics[height=1em]{pdf.png}}\\
+					    
+					Buzzer &
+					\href{http://fr.farnell.com/murata/7bb-20-6l0/sirene-6-3khz/dp/1192520}
+					{7BB-20-6L0} & 1.26 & &
+					- & \href{http://www.farnell.com/datasheets/1702353.pdf}{\includegraphics[height=1em]{pdf.png}}\\
+					    
+					Voltage Regulator 3.3V &
+					\href{http://fr.farnell.com/texas-instruments/ua78m33cdcy/regul-de-tension-2vdo-0-5a-3-3v/dp/2296031}
+					{UA78M33CDCY} &  0,461 & 350 mA @ 2V = 700mW &
+					- &
+					\href{http://www.ti.com/lit/ds/symlink/ua78m.pdf}{\includegraphics[height=1em]{pdf.png}}\\
+					    
+					Micro SD socket &
+					\href{http://fr.farnell.com/hirose-hrs/dm3at-sf-pejm5-40/connecteur-micro-sd-push-push/dp/1764374}
+					{DM3AT-SF-PEJM5(40)} & 2,64 & &
+					- &
+					\href{http://www.farnell.com/datasheets/1697167.pdf}{\includegraphics[height=1em]{pdf.png}}\\
+					    
+					Battery Holder &
+					\href{http://fr.farnell.com/keystone/2477/battery-holder-pcb/dp/1650684}
+					{2477} & 1.41 & &
+					- &
+					\href{http://www.farnell.com/datasheets/1703957.pdf}{\includegraphics[height=1em]{pdf.png}}\\
+					    
+					Switch &
+					\href{http://fr.farnell.com/eoz/09-03290-01/commutateur-a-glissiere/dp/674345}
+					{09-03290.01} & 1.05 & &
+					- &
+					\href{http://www.farnell.com/datasheets/2010029.pdf}{\includegraphics[height=1em]{pdf.png}}\\
+					    
+					\hline
+					total & & 32,051 & & &\\
+					\hline
+				\end{tabular}
+			}
+\end{document}
