@@ -120,8 +120,23 @@
 	\begin{multicols}{2}
 		\subsection*{UART}
 		UART stands for "Universal Asynchronous Receiver Transmitter" it is a little circuit in a micro-controller which transmits and receives serial data.
-		As it doesn't use clock it needs to work on a fixed frequency known as the baud rate, the baud rate is explained as bits per second (bps) and both peripherals needs to work on the same one in order to communicate.
-		UART transmits data in packets which consist of 1 start bit, 5 to 9 data bits, an optional parity bit, and 1 or 2 stop bits.
+		As it doesn't use clock it needs to work on a fixed frequency known as the baud rate, the baud rate is explained as bits per second (bps) and both peripherals need to work on the same one in order to communicate.
+		When no data is being sent the UART line is in idle state (logic high).
+		To send data UART transmits it in packets, this packets are conformed as follows:
+		
+		
+\centering{
+	\begin{itemize}
+		\item 1 Start Bit (To exit the idle state)
+		\item 5-9 Data Bits (The actual data)
+		\item 1 Optional Parity Bit (Like a checksum)
+		\item 1 or 2 Stop Bits (To enter the idle state again)
+	\end{itemize}
+}
+		
+		All of the configuration, like how many data bits, if there will be a parity bit, if there will be 1 or 2 stop bits and the baud rate have to be set beforehand.
+		
+
 
 		\begin{center}
 			\includegraphics[width=12cm]{UART_packet.png}
@@ -133,13 +148,13 @@
 SPI stands for ”Serial Peripheral Interface” it is a synchronous and full-duplex communication protocol, which means that it uses a clock and it can receive and send at the same timeThis protocol uses 3 lines to work and then one pin more for each slave to in order to select it:
 
 	\begin{itemize}
-		\item SCLK $\Rightarrow$ Serial Clock\\  
+		\item SCLK $\Rightarrow$ Serial Clock 
 			(SCK, SCL)
-		\item MOSI $\Rightarrow$  Master Output, Slave Input \\
+		\item MOSI $\Rightarrow$  Master Output, Slave Input
 			(SDI, DI, SI)
-		\item MISO $\Rightarrow$  Master Input, Slave Output \\  
+		\item MISO $\Rightarrow$  Master Input, Slave Output  
 			(SDO, SDA, DO, SO)
-		\item SS $\Rightarrow$  Slave Select \\  
+		\item SS $\Rightarrow$  Slave Select
 			(nCS, CS, nSS, STE, CSN)
 	\end{itemize}
 So first the master has to select a slave, to do so it lowers the appropiate `SS` line. To send the data they must have agreed in the settings for Clock Polarity and Clock Phase. There are 4 modes available:
