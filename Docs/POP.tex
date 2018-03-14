@@ -130,33 +130,43 @@
 		\vspace{4cm}
 
 		\subsection*{SPI}
-		SPI stands for "Serial Peripheral Interface" it is a synchronous and full-duplex communication protocol, which means that it uses a clock and it can receive and send at the same time\\
+SPI stands for ”Serial Peripheral Interface” it is a synchronous and full-duplex communication protocol, which means that it uses a clock and it can receive and send at the same timeThis protocol uses 3 lines to work and then one pin more for each slave to in order to select it:
 
-		\subsubsection*{}
-		This protocol needs 3 pins in order to work and uses one pin more for each slave to select it
-		\begin{itemize}
-			\item SCLK $\Rightarrow$ Serial Clock\\
-				  (SCK, SCL)
-			\item MOSI $\Rightarrow$ Master Output, Slave Input\\
-				  (SDI, DI, SI)
-			\item MISO $\Rightarrow$ Master Input, Slave Output\\
-				  (SDO, SDA, DO, SO)
-			\item SS $\Rightarrow$ Slave Select\\
-				  (nCS, CS, nSS, STE, CSN)
-		\end{itemize}
-		There are 4 modes available to use the clock depending on the peripherals properties\\
-			\begin{center}
-				\begin{tabular}{|c|c|c|}\hline
-					SPI mode & CPOL & CPHA \\\hline\hline
-					0        & 0    & 0    \\\hline
-					1        & 0    & 1    \\\hline
-					2        & 1    & 0    \\\hline
-					3        & 1    & 1    \\\hline
-				\end{tabular}
-			\end{center}
+	\begin{itemize}
+		\item SCLK $\Rightarrow$ Serial Clock\\  
+			(SCK, SCL)
+		\item MOSI $\Rightarrow$  Master Output, Slave Input \\
+			(SDI, DI, SI)
+		\item MISO $\Rightarrow$  Master Input, Slave Output \\  
+			(SDO, SDA, DO, SO)
+		\item SS $\Rightarrow$  Slave Select \\  
+			(nCS, CS, nSS, STE, CSN)
+	\end{itemize}
+So first the master has to select a slave, to do so it lowers the appropiate `SS` line. To send the data they must have agreed in the settings for Clock Polarity and Clock Phase. There are 4 modes available:
 
-		The master starts by pulling down the Slave Select and starts the clock, then it sends a Read/Write bit, the address it wants to access. FinalLy it reads or writes the actual data
+	\begin{center}
+		\begin{tabular}{|c|c|c|}\hline
+			SPI mode & CPOL & CPHA \\\hline
+			0        & 0    & 0    \\\hline
+			1        & 0    & 1    \\\hline
+			2        & 1    & 0    \\\hline
+			3        & 1    & 1    \\\hline
+		\end{tabular}
+	\end{center}
 
+The master then turns on the clock. To send the data, the master uses the `MOSI` line and the slave uses the `MISO`. They send one bit per clock cycle, the exact timing specific is determinated by the Clock Settings. And can be seen in the following graphic. In the clock waveform there are two states the 'send' mode and the 'capture' mode. The data lines (MISO, MOSI) cannot change while the clock is on the capture mode. They can only do it while in the 'send' mode.
+
+	\begin{center}
+			\includegraphics[width=12cm]{SPI_timing.png}
+	\end{center}
+
+
+One thing to have in account is that: As the master is the one that's responsible for keeping the clock signal alive it has to keep sending the clock signal if it won't send data but expects data from the slave.
+\\
+\vspace{0.5cm}
+Once the comunication with that slave has ended the SS is raised again. And then the slave puts the MISO line in high impedance mode.
+	
+		\vspace{4cm}
 
 		\subsection*{\texorpdfstring{i$^{2}$C}{}}
 		I$^2$C or IIC stands for Inter-Integrated Circuit, it is a protocol which is synchronous, half-duplex, multi-master and multi-slave. It can address between 127 and 1024 devices but is slower than SPI
