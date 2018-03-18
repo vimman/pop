@@ -105,7 +105,7 @@ GenerateClassCluster=0
 DocumentUniqueId=FHTWYAWE
 
 [Document5]
-DocumentPath=..\TP3\TP3_lib\TP3_lib.LibPkg
+DocumentPath=..\TP3\TP3_lib\Project Outputs for TP3_lib\TP3_lib.IntLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -120,6 +120,23 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
+
+[Document6]
+DocumentPath=..\TP3\TP3.PcbDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=BYPEKYHL
 
 [Configuration1]
 Name=Default Configuration
@@ -1039,7 +1056,7 @@ NetClassAutoNamedHarnessEnabled=0
 NetClassManualEnabled=1
 
 [LibraryUpdateOptions]
-SelectedOnly=0
+SelectedOnly=1
 UpdateVariants=1
 PartTypes=0
 ComponentLibIdentifierKind0=Library Name And Type
@@ -1103,10 +1120,10 @@ ComponentSymbolReference9=Resistor
 ComponentUpdate9=0
 ComponentIsDeviceSheet9=0
 ComponentLibIdentifierKind10=Library Name And Type
-ComponentLibraryIdentifier10=TPs.SchLib
+ComponentLibraryIdentifier10=TP3_lib.IntLib
 ComponentDesignItemID10=RPot
 ComponentSymbolReference10=RPot
-ComponentUpdate10=0
+ComponentUpdate10=1
 ComponentIsDeviceSheet10=0
 FullReplace=1
 UpdateDesignatorLock=1
@@ -1186,14 +1203,17 @@ ModelType5=PCBLIB
 ModelName5=PIC32MX
 ModelUpdate5=1
 ModelType6=PCBLIB
-ModelName6=SMA/DO-214AC_21
+ModelName6=Potentiometer
 ModelUpdate6=1
 ModelType7=PCBLIB
-ModelName7=TD03B_N
+ModelName7=SMA/DO-214AC_21
 ModelUpdate7=1
 ModelType8=PCBLIB
-ModelName8=XTAL139X50X45
+ModelName8=TD03B_N
 ModelUpdate8=1
+ModelType9=PCBLIB
+ModelName9=XTAL139X50X45
+ModelUpdate9=1
 
 [DatabaseUpdateOptions]
 SelectedOnly=0
