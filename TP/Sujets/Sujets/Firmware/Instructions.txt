@@ -22,8 +22,8 @@ Vous devez utiliser un timer pour rÈgler la vitesse de clignotement
 
 3/ Utilisation des interruptions
 
-Votre code doit maintenant Ítre "non bloquant", votre main loop ne doit contenir qu'un statement: clear watchdog
-Le clignotement ainsi que la gestion du bouton doivent Ítre fait dans une ISR.
+Votre code doit maintenant être "non bloquant", votre main loop ne doit contenir qu'un statement: clear watchdog
+Le clignotement ainsi que la gestion du bouton doivent être fait dans une ISR.
 
 4/ DIM de la LED (a.k.a pour-les-vrais-qui-en-ont-dans-le-slip-ou-le-string)
 
