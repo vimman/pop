@@ -1,15 +1,20 @@
 #include "type.h"
 #include <p32xxxx.h>
 
-int main()
+int main1()
 {
-    TRISD = 1 << 8;						// Set the button pin to input
-    TRISF &= ~(1 << 1);					// Set the led pin to output
+	u8 sw = 1;
 
-    while (42)
-    {
-        while (PORTD & (1 << 8));		// While not pushed
-        LATF ^= 1 << 1;					// Switch led state
-        while (!(PORTD & (1 << 8)));	// While pushed
-    }
+	TRISD = 1 << 8;			/* Set the button pin to input */
+	TRISF &= ~(1 << 1);		/* Set the led pin to output */
+	while (42)
+	{
+		if (!(PORTD & (1 << 8)) && sw)
+		{
+			sw = 0;
+			LATF ^= 1 << 1;	/* Switch led state */
+		}
+		else if (PORTD & (1 << 8))
+			sw = 1;
+	}
 }
